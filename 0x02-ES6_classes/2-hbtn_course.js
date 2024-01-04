@@ -21,7 +21,7 @@ export default class HolbertonCourse {
   }
 
   set length(val) {
-    if (typeof val !== 'number' || isNaN(val)) {
+    if (typeof val !== 'number' || Number.isNaN(val)) {
       throw new TypeError('Length must be a number');
     }
     this._length = val;
@@ -32,9 +32,10 @@ export default class HolbertonCourse {
   }
 
   set students(val) {
-    if (!Array.isArray(val)) {
+    if (val instanceof Array) {
+      this._students = val;
+    } else {
       throw new TypeError('Students must be an array');
     }
-    this._students = val;
   }
 }
