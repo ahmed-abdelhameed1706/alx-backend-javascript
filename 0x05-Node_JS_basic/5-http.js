@@ -40,7 +40,7 @@ const countStudents = (path) => new Promise((resolve, reject) => {
         studentsInField[key].length
       }. List: ${studentsInField[key].join(', ')}`;
       if (index !== keys.length - 1) {
-        response += '\n'; // Add newline if not the last key
+        response += '\n';
       }
     });
 
@@ -57,10 +57,14 @@ const app = http.createServer((req, res) => {
   if (req.url === '/') {
     res.end('Hello Holberton School!');
   } else if (req.url === '/students') {
-    countStudents(path).then((data) => {
-      res.write('This is the list of our students\n');
-      res.end(data);
-    });
+    countStudents(path)
+      .then((data) => {
+        res.write('This is the list of our students\n');
+        res.end(data);
+      })
+      .catch(() => {
+        res.end('Cannot load the database');
+      });
   }
 });
 
