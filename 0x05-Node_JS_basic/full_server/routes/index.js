@@ -1,11 +1,13 @@
-const AppController = require('../controllers/AppController');
-const StudentsController = require('../controllers/StudentsController');
+const AppController = require("../controllers/AppController");
+const StudentsController = require("../controllers/StudentsController");
+const express = require("express");
 
-const linkRoutes = (server) => {
-  server.get('/', AppController.getHomepage);
+const linkRoutes = express.Router();
 
-  server.get('/students', StudentsController.getAllStudents);
-  server.get('/students/:major', StudentsController.getAllStudentsByMajor);
-};
+linkRoutes.get("/", AppController.getHomepage);
+
+linkRoutes.get("/students", StudentsController.getAllStudents);
+
+linkRoutes.get("/students/:major", StudentsController.getAllStudentsByMajor);
 
 module.exports = linkRoutes;
