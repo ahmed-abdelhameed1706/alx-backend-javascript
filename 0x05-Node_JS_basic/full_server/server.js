@@ -1,5 +1,5 @@
-const express = require("express");
-const linkRoutes = require("./routes/index");
+const express = require('express');
+const linkRoutes = require('./routes/index');
 
 const port = 1245;
 
