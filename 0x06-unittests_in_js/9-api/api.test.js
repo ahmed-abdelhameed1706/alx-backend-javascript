@@ -9,10 +9,13 @@ describe("checking the API Index Page", function () {
       done();
     });
   });
+});
 
+describe("checking the API Cart Page", function () {
   it("checks cart page status code with number", function (done) {
-    request("http://localhost:7865/cart/12", function (req, res) {
+    request("http://localhost:7865/cart/12", function (req, res, body) {
       expect(res.statusCode).to.equal(200);
+      expect(body).to.equal("Payment methods for cart 12");
       done();
     });
   });
