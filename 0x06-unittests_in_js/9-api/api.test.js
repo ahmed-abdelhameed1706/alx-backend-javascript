@@ -12,13 +12,16 @@ describe("checking the API Index Page", function () {
 });
 
 describe("checking the API Cart Page", function () {
-  it("checks cart page status code", function (done) {
-    request("http://localhost:7865/cart/12", function (res, res) {
+  it("checks cart page status code with number", function (done) {
+    request("http://localhost:7865/cart/12", function (req, res) {
       expect(res.statusCode).to.equal(200);
+      done();
     });
-    request("http://localhost:7865/cart/asda", function (res, res) {
+  });
+  it("checks cart page status code with string", function (done) {
+    request("http://localhost:7865/cart/asd", function (req, res) {
       expect(res.statusCode).to.equal(404);
+      done();
     });
-    done();
   });
 });
