@@ -9,9 +9,7 @@ describe("checking the API Index Page", function () {
       done();
     });
   });
-});
 
-describe("checking the API Cart Page", function () {
   it("checks cart page status code with number", function (done) {
     request("http://localhost:7865/cart/12", function (req, res) {
       expect(res.statusCode).to.equal(200);
